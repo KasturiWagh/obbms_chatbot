@@ -1,0 +1,36 @@
+{% extends 'common.html' %}
+{% block body %}
+<!-- Patient -->
+  {% if allinfo|length == 0 %}
+      <div class="alert alert-danger" role="alert">
+        No Doners avialable <a href="/" class="alert-link">Go to Home page</a>.This will Take you to home page.
+      </div>
+  {% else %}
+    <input id="searchbar"   onkeyup="search_Btype()" type="text"
+        name="search" placeholder="Search Blood Type">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">sno0</th>
+          <th scope="col">Name And location</th>
+          <th scope="col">Blood Type</th>
+          <th scope="col">contact</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for info in allinfo %} 
+        <tr id='list' class="a">
+          <th scope="Sno">{{loop.index}}</th>
+          <td>{{info[0]}}</td>
+          <td class="Btype">{{info[1]}}</td>
+          <td>{{info[2]}}</td>
+          
+        </tr>
+        {% endfor %}
+      </tbody> 
+    </table>
+  {% endif %}
+    <script src="{{url_for('static', filename='js/search.js')}}"></script>
+</html>
+{% endblock body %}
