@@ -17,8 +17,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///info.db"   #database
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-
-
 class Info(db.Model):
     sno = db.Column(db.Integer, primary_key=True)
     Donername = db.Column(db.String(200), nullable=False)
@@ -211,6 +209,11 @@ def Admin():
              return render_template('login.html', params=params)
     else:
         return render_template('login.html', params=params)
+
+#chatbot
+@app.route('/chatbot')
+def chatbot():
+    return render_template('chatbot.html')
 
 #login
 @app.route('/login')
